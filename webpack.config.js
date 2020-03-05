@@ -19,8 +19,10 @@ module.exports = {
 				fs: 'graceful-fs',
 				net: 'empty'
 			},
+			extensions: ['.mjs', '.js', '.svelte'],
+			mainFields: ['svelte', 'browser', 'module', 'main']
+		},
 		output: config.client.output(),
-		extensions, mainFields },
 		module: {
 			rules: [
 				{
@@ -30,7 +32,7 @@ module.exports = {
 						options: {
 							dev,
 							hydratable: true,
-							hotReload: false // pending https://github.com/sveltejs/svelte/issues/2377
+							hotReload: true // pending https://github.com/sveltejs/svelte/issues/2377
 						}
 					}
 				}
