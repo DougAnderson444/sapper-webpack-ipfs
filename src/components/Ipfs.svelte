@@ -36,7 +36,7 @@
 
 	onMount(async() => {
 		// from ipfs browser-webpack
-		console.log('Component has Mounted')
+		// console.log('Component has Mounted')
 		// name the repository, repository saved in the browser's IndexedDB
 		// https://github.com/ipfs/js-ipfs/tree/master/packages/ipfs#ipfs-constructor
 		const options = { 
@@ -112,7 +112,7 @@
 
 	$: {
 		if(node && $keys && addedFileHash){
-			console.log(`node and keys ready, let's start listening`)
+			//console.log(`node and keys ready, let's start listening`)
 			subscribe().then(console.log(`Successfull subscribed!`)).then(ping())
 			
 		}

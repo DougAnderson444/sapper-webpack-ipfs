@@ -6,7 +6,7 @@ import {start} from './stores.js';
 // Props
 export let value = '';
 export let type = 'text';
-export let placeholder = 'Click to Edit';
+export let placeholder = 'Double-Click to Edit';
 export let labelClasses = '';
 export let inputClasses = '';
 let editing = false;
@@ -52,7 +52,7 @@ const handleBlur = (_) => {
 {:else}
   <span 
     class={labelClasses}
-    on:click={toggle}>
+    on:dblclick={toggle}>
   {label}
   </span>
 {/if}

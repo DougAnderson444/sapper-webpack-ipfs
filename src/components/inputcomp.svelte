@@ -91,6 +91,7 @@
 		color: #333;
         -webkit-appearance: button;
         -webkit-writing-mode: horizontal-tb !important;
+        writing-mode: horizontal-tb !important;
         text-rendering: auto;
         letter-spacing: normal;
         word-spacing: normal;
