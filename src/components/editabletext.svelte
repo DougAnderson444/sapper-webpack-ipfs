@@ -1,3 +1,8 @@
+<style>     
+    .editing {
+        color: rgb(207, 33, 33)
+    }
+</style>
 <script>
 // https://codesandbox.io/s/quizzical-flower-prx95
 

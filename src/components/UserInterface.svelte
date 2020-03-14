@@ -33,8 +33,7 @@
 	      { type: "file", name: "duck-shuffle", value: "The value" },
 	      { type: "file", name: "monkey-on-a-pig", value: "The value" }
 	    ]
-	  },
-	  { type: "file", name: "TODO", value: "The address" }
+	  }
 	];
 </script>
 

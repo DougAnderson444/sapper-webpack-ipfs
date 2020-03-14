@@ -4,7 +4,7 @@
     import { slide } from 'svelte/transition';
     
 	import Fa from "svelte-fa";
-	import { faFlag } from "@fortawesome/free-solid-svg-icons";
+	import { faFlag, faPlus, faCertificate, faUserCheck, faEllipsisH, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 	export let expanded = false;
 	export let name;
@@ -26,16 +26,18 @@
 </script>
 
 <style>
-	span {
+	div, span {
 	  padding: 0 0 0 1.5em;
 	  background: url(tutorial/icons/folder.svg) 0 0.1em no-repeat;
 	  background-size: 1em 1em;
 	  font-weight: bold;
 	  cursor: pointer;
+      color: gray
 	}
 
 	.expanded {
 	  background-image: url(tutorial/icons/folder-open.svg);
+      color: black
 	}
 
 	ul {
@@ -50,8 +52,8 @@
 	}
 </style>
 
-<span class:expanded on:click={toggle}><EditableText placeholder={name}/>  </span>
-				
+<span class:expanded on:click={toggle}><EditableText placeholder={name}/></span> 
+
 {#if expanded}
 	<ul transition:slide|local>
 		{#each files as file}
@@ -59,9 +61,17 @@
 				{#if file.type === 'folder'}
 					<svelte:self {...file}/>
 				{:else}
-					<InfoCard {...file} />
+					<div><InfoCard {...file} /></div>
 				{/if}
 			</li>
 		{/each}
-	</ul>
+			<li>
+                <span class:expanded><Fa icon={faPlus} /></span> 
+            </li>
+	</ul>    
+<br/>
+<span class:expanded on:click={toggle} ><Fa icon={faAngleUp} /></span>
+{:else}
+<br/>
+<span class:expanded on:click={toggle}><Fa icon={faEllipsisH} /></span>
 {/if}

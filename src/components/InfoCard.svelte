@@ -1,7 +1,11 @@
 <script>
-    import EditableText from "./EditableText.svelte";
+    import EditableText from "./EditableText.svelte";    
+	import Fa from "svelte-fa";
+    import { faFlag, faPlus, faCertificate, faUserCheck } from "@fortawesome/free-solid-svg-icons";
+    
     export let name;
     export let value;
+    let editing="editing"
 </script>
 
 <style>
@@ -18,11 +22,12 @@
 	  margin: 0 0 1em 0;
 	  border-bottom: 1px solid green;
 	}
+
 </style>
 
 <article class="contact-card">
 	<h3>
-			<span><EditableText placeholder={name}/></span>
+			<span><EditableText placeholder={name} inputClasses={editing} /></span> <Fa icon={faCertificate} primaryColor="limegreen" />
 	</h3>
 
 	<div class="value">
