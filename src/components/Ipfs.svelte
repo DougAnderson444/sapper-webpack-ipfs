@@ -28,7 +28,8 @@
 	{
 	"Identity": {
 		"PeerID": "Qmbjna...",
-		"PrivKey": "RHwz3..."
+		"PrivKey": "RHwz3...",
+		"pubKey": "CAASogEw..."
 	},
 	"Datastore": { ... 
 	*/
@@ -49,10 +50,9 @@
 				}
 			}
 		//	init: {				// only runs initially
-		//		bits: 1024,
-		//		privateKey: "", // string or PeerId, A pre-generated private key to use. Can be either a base64 string or a PeerId instance.
+		//		privateKey: "", // (base64 PrivKey) string or full PeerId, A pre-generated private key to use. Can be either a base64 string or a PeerId instance.
 		//	}
-							// EXPERIMENTAL: { ipnsPubsub: true, sharding: false }
+		// EXPERIMENTAL: { ipnsPubsub: true }
 		} 
 		node = await IPFS.create( options )  
 		$ifpsNode = node
@@ -88,17 +88,24 @@
 		cid = await getCID(stringToUse)
 
 		const config = await node.config.get()
-		//console.log(`options.config`, config)
-		//console.log(`config.Identity.PrivKey: \n`, config.Identity.PrivKey)
+		console.log(`options.config`, config)
+		//console.log(`config.Identity.PrivKey: \n`, config.Identity.PrivKey)  //PeerId PrivKey?
+
+		// https://github.com/ipfs/js-ipfs/blob/447b44d1b64714f5ed0cafba166ad0a4dbbb587c/packages/ipfs/src/core/components/init.js
+		/* 	config.Identity = {
+				PeerID: peerId.toB58String(),
+				PrivKey: peerId.privKey.bytes.toString('base64')
+		*/
+		// test if signature with this private key matches the Public key from the peerid
 
 		const stats = await node.repo.stat()
 		//console.log(`Repo stats: `,stats)
 
-		//list all keys
-		// const keys = await node.key.list()
+		//list all ipns keys
+		//const keys = await node.key.list()
 		//console.log(`List all keys: \n `, keys)
 
-		const pem = await node.key.export('self', password)
+		//const pem = await node.key.export('self', password)   // key is for ipns
 		//console.log(`pem is: \n `,pem)
 
 	})
