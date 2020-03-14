@@ -5,7 +5,8 @@
     
     export let name;
     export let value;
-    let editing="editing"
+	export let certified = false;
+
 </script>
 
 <style>
@@ -23,11 +24,14 @@
 	  border-bottom: 1px solid green;
 	}
 
+	.certified {
+      color: limegreen
+	}
 </style>
 
 <article class="contact-card">
 	<h3>
-			<span><EditableText placeholder={name} inputClasses={editing} /></span> <Fa icon={faCertificate} primaryColor="limegreen" />
+			<span><EditableText placeholder={name} /></span> <span class:certified><Fa icon={faCertificate} /></span>
 	</h3>
 
 	<div class="value">

@@ -34,13 +34,7 @@
 {#if $keys}  <!-- only show when stores has copied key pair -->
 	<p>
 	Share Your Public Key with someone: {$keys.publicKey} 
-	<Fa icon={faCopy}   primaryColor="green"
-						secondaryColor="limegreen"
-						primaryOpacity={0.8}
-						secondaryOpacity={0.6}
-						size="lg" 
-						swapOpacity /> <Fa icon={faLink} />  <Fa icon={faQrcode} /> <br />
+	<Fa icon={faLink} /> <Fa icon={faCopy} />  <Fa icon={faQrcode} /> <br />
 	</p>
-	
 {/if}
 

@@ -55,6 +55,7 @@
 		// EXPERIMENTAL: { ipnsPubsub: true }
 		} 
 		node = await IPFS.create( options )  
+
 		$ifpsNode = node
 		$start = new Date()
 		console.log('IPFS node is ready')

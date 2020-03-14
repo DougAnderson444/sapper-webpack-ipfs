@@ -2,11 +2,13 @@
 	import InfoCard from "./InfoCard.svelte";
 	import EditableText from "./EditableText.svelte";
     import { slide } from 'svelte/transition';
-    
+    import Head from './Head.svelte'
+
 	import Fa from "svelte-fa";
-	import { faFlag, faPlus, faCertificate, faUserCheck, faEllipsisH, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+	import { faFlag, faPlus, faCertificate, faUserCheck, faEllipsisH, faAngleUp, faQrcode, faCopy, faLink } from "@fortawesome/free-solid-svg-icons";
 
 	export let expanded = false;
+	export let head
 	export let name;
 	export let files;
 
@@ -22,21 +24,19 @@
 
 	function empty() {
 	  fill = false;
-	}
+    }
+
 </script>
 
 <style>
 	div, span {
 	  padding: 0 0 0 1.5em;
-	  background: url(tutorial/icons/folder.svg) 0 0.1em no-repeat;
-	  background-size: 1em 1em;
 	  font-weight: bold;
 	  cursor: pointer;
       color: gray
 	}
 
 	.expanded {
-	  background-image: url(tutorial/icons/folder-open.svg);
       color: black
 	}
 
@@ -53,6 +53,8 @@
 </style>
 
 <span class:expanded on:click={toggle}><EditableText placeholder={name}/></span> 
+
+<svelte:component this={head ? Head : false}/>
 
 {#if expanded}
 	<ul transition:slide|local>
