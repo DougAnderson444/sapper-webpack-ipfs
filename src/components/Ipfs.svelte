@@ -4,7 +4,8 @@
 	import { nodeId, nodeAgentVersion, nodeProtocolVersion, ifpsNode, start, keys } from './stores.js'
 	import { signMessage, verifySignature } from '../components/pkiHelper.js';
 	const IPFS = require('ipfs');
-	
+	const Graph = require('@DougAnderson444/ipld-graph-builder')
+
 	/* Alternatives for auto-pinning
 	const IPFS = require('ipfs-mini'); // https://github.com/SilentCicero/ipfs-mini
 	const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
@@ -21,6 +22,7 @@
 	let topic //pubsub topic = $keys.publicKey
 	const pingText = "Ping!"
 	let rootHash
+	let graph
 
 	/*
 	keys in IPFS
@@ -55,6 +57,33 @@
 		// EXPERIMENTAL: { ipnsPubsub: true }
 		} 
 		node = await IPFS.create( options )  
+		// Graph out some data on this node
+		graph = new Graph(ipfs.dag)
+		const a = {
+			some: {
+				thing: 'nested'
+			}
+		}
+		const b = {
+			lol: 1
+		}
+
+		graph.set(a, 'some/thing/else', b).then(result => {
+			// set "patches" together two objects
+			console.log(JSON.stringify(`result: \n`, result))
+
+			// flush replaces the links with merkle links, resulting in a single root hash
+			graph.flush(result).then((result) => {
+				console.log(`result 2: \n`, result)
+				// { '/': 'zdpuAqnGt7k49xSfawetvZXSLm4b1vvkSMnDrk4NFqnCCnW5V' }
+
+				// taverse paths through merkle links given a starting vertex
+				graph.get(result, 'some/thing/else').then(result2 => {
+					console.log(`result 3: \n`, result2)
+					// { lol: 1 }
+				})
+			})
+		})
 
 		$ifpsNode = node
 		$start = new Date()

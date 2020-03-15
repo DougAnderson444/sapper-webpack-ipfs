@@ -4,4 +4,6 @@
 
 <h1>About this site</h1>
 
-<p>This is the 'about' page. There's not much here.</p>
+<p>PeerPiper is all about connecting, collecting, and piping data automatically between your peers </p>
+
+<p>This site is a playround for this Web 3.0 action.</p>

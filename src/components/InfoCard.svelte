@@ -25,7 +25,7 @@
 	}
 
 	.certified {
-      color: limegreen
+      color: limegreen !important;
 	}
 </style>
 

@@ -28,13 +28,6 @@
 </svelte:head>
 
 <IpfsComp/>
-
+<br />
+<br />
 <UserInterface />
-
-{#if $keys}  <!-- only show when stores has copied key pair -->
-	<p>
-	Share Your Public Key with someone: {$keys.publicKey} 
-	<Fa icon={faLink} /> <Fa icon={faCopy} />  <Fa icon={faQrcode} /> <br />
-	</p>
-{/if}
-

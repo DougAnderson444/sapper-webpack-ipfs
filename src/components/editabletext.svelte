@@ -4,11 +4,12 @@
     }
 </style>
 <script>
-// https://codesandbox.io/s/quizzical-flower-prx95
 
+// Save
 import { tick } from 'svelte';
-import {start} from './stores.js';
-// Props
+import { start } from './stores.js';
+
+// Properties (Props)
 export let value = '';
 export let type = 'text';
 export let placeholder = 'Double-Click to Edit';
@@ -17,6 +18,7 @@ export let inputClasses = '';
 let editing = false;
 let inputEl;
 let label;
+
 // Computed
 $: isText = type === 'text';
 $: isNumber = type === 'number';

@@ -48,3 +48,18 @@ Open up [localhost:3000](http://localhost:3000) and start clicking around.
 Consult [sapper.svelte.dev](https://sapper.svelte.dev) for help getting started.
 
 
+### Build the Project
+
+```npm run build```
+
+to get the built files in the public folder. the publish directory is: ```public``` (this is the default folder used by svelte for store the build files)
+
+### Deploy to IPFS
+
+Deploy to IPFS by
+
+```bash
+ipfs-deploy build -p infura
+```
+
+Which returns the CID string QmAbc.... which is the hash for this website

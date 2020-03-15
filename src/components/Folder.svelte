@@ -33,6 +33,8 @@
 	  padding: 0 0 0 1.5em;
 	  font-weight: bold;
 	  cursor: pointer;
+	}
+    span {
       color: gray
 	}
 
@@ -63,7 +65,7 @@
 				{#if file.type === 'folder'}
 					<svelte:self {...file}/>
 				{:else}
-					<div><InfoCard {...file} /></div>
+					<div class:expanded ><InfoCard {...file} /></div>
 				{/if}
 			</li>
 		{/each}
@@ -71,9 +73,7 @@
                 <span class:expanded><Fa icon={faPlus} /></span> 
             </li>
 	</ul>    
-<br/>
-<span class:expanded on:click={toggle} ><Fa icon={faAngleUp} /></span>
+<!--br/--><span class:expanded on:click={toggle} ><Fa icon={faAngleUp} /></span>
 {:else}
-<br/>
-<span class:expanded on:click={toggle}><Fa icon={faEllipsisH} /></span>
+<!--span class:expanded on:click={toggle}><Fa icon={faEllipsisH} /></span-->
 {/if}
