@@ -12,7 +12,6 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "@DougAnderson444/ipld-graph-builder": "git+https://github.com/DougAnderson444/js-ipld-graph-builder.git",
     "compression": "^1.7.1",
     "ipfs": "^0.41.2",
     "ipfs-mini": "^1.1.5",
