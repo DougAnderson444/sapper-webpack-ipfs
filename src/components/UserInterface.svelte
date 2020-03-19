@@ -101,8 +101,5 @@
 </style>
 
 <div class='outer'>
- 
- <Folder name="Portfolio" files={root} expanded head={true} />
- This user's schema is:
- <!--Schema /-->
+<Folder name="Portfolio" files={root} expanded head={true} />
 </div>

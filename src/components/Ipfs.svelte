@@ -1,9 +1,11 @@
  <script>
 
     import { onMount } from 'svelte';
-	import { nodeId, nodeAgentVersion, nodeProtocolVersion, ifpsNode, start, keys } from './stores.js'
+	import { nodeId, nodeAgentVersion, nodeProtocolVersion, ifpsNode, start, keys, rootHash } from './stores.js'
 	import { signMessage, verifySignature } from '../components/pkiHelper.js';
+
 	const IPFS = require('ipfs');
+	const all = require('it-all')
 
 	/* Alternatives for auto-pinning
 	const IPFS = require('ipfs-mini'); // https://github.com/SilentCicero/ipfs-mini
@@ -20,7 +22,6 @@
 	let password = "mysupersecretpasswordhere" 
 	let topic //pubsub topic = $keys.publicKey
 	const pingText = "Ping!"
-	let rootHash
 	let graph
 
 	/*
@@ -88,6 +89,24 @@
 
 		//save as data to DAG
 		cid = await getCID(stringToUse)
+		$rootHash = cid
+
+		// example obj
+		const obj = {
+			a: 1,
+			b: [1, 2, 3],
+			c: {
+				ca: [5, 6, 7],
+				cb: 'foo'
+			}
+		}
+
+		const treeid = await node.dag.put(obj, { format: 'dag-cbor', hashAlg: 'sha2-256' })
+		console.log(`treeid is \n ${treeid.toString()}`)
+		// zdpuAmtur968yprkhG9N5Zxn6MFVoqAWBbhUAkNLJs2UtkTq5
+
+		const paths = await all(node.dag.tree(treeid))
+		console.log(`tree result is \n ${JSON.stringify(paths)}`)
 
 		const config = await node.config.get()
 		console.log(`options.config`, config)
@@ -199,10 +218,6 @@
         {addedFileContents}
     </p>
 	<p>
-	Root of Public key is: {rootHash}
-	</p>
-	<p>
 	Did it really come from you-know-who? Check the signature:
-
 	</p>
 </div>
