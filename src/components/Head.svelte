@@ -36,7 +36,7 @@ div {
     <Fa icon={faLink} /></a> <Clipboard value={$keys.publicKey}/>
     </span>
 
-    <div on:click={()=>{showQR()}} ><Fa icon={faQrcode} size="lg" /></div>
+    <div on:click={()=>{showQR()}} ><Fa icon={faQrcode} size="lg" /> </div>
 
     <canvas hidden={!visible} transition:fade on:mousemove={()=>{visible = !visible}}
         bind:this={canvas}
