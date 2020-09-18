@@ -16,7 +16,7 @@
     "ipfs": "^0.41.2",
     "ipfs-mini": "^1.1.5",
     "it-all": "^1.0.1",
-    "node-forge": "^0.9.1",
+    "node-forge": "^0.10.0",
     "polka": "next",
     "qrcode": "^1.4.4",
     "sapper-environment": "^1.0.1",
